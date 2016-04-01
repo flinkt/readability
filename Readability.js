@@ -155,6 +155,9 @@ Readability.prototype = {
    * @return void
    */
   _forEachNode: function(nodeList, fn) {
+    if (nodeList.constructor.name == 'HTMLCollection')
+        nodeList = [].slice.call(nodeList);
+
     return Array.prototype.forEach.call(nodeList, fn, this);
   },
 
